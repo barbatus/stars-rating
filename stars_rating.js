@@ -1,9 +1,3 @@
-Template.userRating.helpers({
-    css: function(size) {
-        return 'stars-rating-' + (size || 'lg');
-    }
-});
-
 var rtCss = 'current-rating';
 var userRtCss = 'user-current-rating';
 var hasUserCss = 'has-user-rating';
@@ -44,6 +38,15 @@ function setRating($el, rating, isUser) {
         $percentStar.append(style);
     }
 }
+
+Template.starsRating.helpers({
+    getId: function() {
+        return this.id || (this.isMutable && 'stars') || null;
+    },
+    css: function(size) {
+        return 'stars-rating-' + (size || 'lg');
+    }
+});
 
 Template.starsRating.rendered = function() {
     var self = this;
