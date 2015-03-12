@@ -1,0 +1,73 @@
+/***** Stars Rating ******/
+@star-color: #e7711b;
+@star-hover-color: #F5E000;
+
+.stars-rating {
+    font-family: FontAwesome;
+    font-size: 2em;
+    position: relative;
+    width: 5.7em;
+    height: 1.3em;
+    overflow: hidden;
+
+    .stars-inner-wrap {
+        position: relative;
+    }
+
+    .stars {
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 0;
+        cursor: pointer;
+        color: #d8d8d8;
+
+        span {
+            visibility: hidden;
+            position: relative;
+            line-height: 1;
+            height: 100%;
+        }
+
+        span:last-of-type {
+            visibility: visible;
+        }
+
+        &.active, &.current-rating.active {
+            color: @star-hover-color;
+
+            .percent:before {
+                display: none;
+            }
+        }
+
+        &.current-rating {
+            color: @star-color;
+        }
+
+        .percent:before {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            content: "\f005";
+            width: 30%;
+            overflow: hidden;
+            color: @star-color;
+            z-index: 1000;
+        }
+    }
+
+    .user-current-rating {
+        color: @star-color;
+    }
+
+    .has-user-rating .percent:before {
+        color: @star-color;
+    }
+}
+
+.stars-rating-sm {
+    font-size: 16px;
+    margin: 0 auto;
+}
