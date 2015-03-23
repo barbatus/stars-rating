@@ -10,15 +10,6 @@ function getStarEl($parent, index) {
     return getStarsEl($parent, index).find('.star-'+ index);
 }
 
-function init($el) {
-    var rating = $el.data('rating');
-    var userRating = $el.data('userrating');
-
-    $el.toggleClass(hasUserCss, !!userRating);
-
-    setRating($el, userRating ? userRating : rating, !!userRating);
-}
-
 function setRating($el, rating, isUser) {
     var ceil = Math.ceil(rating);
     var floor = Math.floor(rating);
@@ -27,6 +18,7 @@ function setRating($el, rating, isUser) {
     $el.find('.stars').removeClass(rtCss + ' ' + userRtCss);
     $el.find('.stars').find('.percent').removeClass('percent');
 
+    $el.toggleClass(hasUserCss, isUser);
     for (var i = floor; i >= 0; i--) {
         getStarsEl($el, i).addClass(isUser ? userRtCss : rtCss);
     }
@@ -34,27 +26,37 @@ function setRating($el, rating, isUser) {
     if (percent) {
         var $percentStar = getStarEl($el, ceil).addClass('percent');
         $percentStar.find('style').remove();
-        var style = '<style>.percent:before{width:'+ (percent * 100) +'% !important;}</style>';
-        $percentStar.append(style);
+        var style = ['<style>', '#' + $el.attr('id'),
+            '.percent:before{width:'+ (percent * 100) +'% !important;}', '</style>'];
+        $percentStar.append(style.join(' '));
     }
+
+    $el.trigger('change');
 }
 
 Template.starsRating.helpers({
     getId: function() {
-        return this.id || (this.isMutable && 'stars') || null;
+        return this.id || _.uniqueId('stars_');
     },
     css: function(size) {
         return 'stars-rating-' + (size || 'lg');
     }
 });
 
+function onDataChange($el, id, rating) {
+    $el.attr('id', id);
+    setRating($el, rating, false);
+}
+
 Template.starsRating.rendered = function() {
     var self = this;
+    var genId = _.uniqueId('stars_');
     this.autorun(function() {
         if (Template.currentData()) {
-            var rating  = Template.currentData().rating;
+            var rating = Template.currentData().rating;
+            var userId = Template.currentData().id;
             if (rating) {
-                init($(self.firstNode));
+                onDataChange($(self.firstNode), userId || genId, rating);
             }
         }
     });
@@ -83,7 +85,6 @@ Template.starsRating.events({
             var userRating = $this.data('stars');
             $this.parent().parent().data('userrating', userRating);
             var $parent = $this.parent();
-            $parent.addClass(hasUserCss);
 
             setRating($parent, userRating, true);
             $this.trigger('mouseleave');
