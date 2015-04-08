@@ -2,7 +2,7 @@ Stars rating control based on FontAwesome with two modes: fixed and mutable.
 
 Mutable mode allows input from the user.
 
-In order to render markup with small font size use (as well as large size='lg'):
+In order to render markup with small font size use (or size='lg' for large):
 ````html
 {{> starsRating rating=4.5 size='sm'}}
 ````
