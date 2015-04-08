@@ -18,4 +18,4 @@ To access saved value:
 ````js
 var rating = $('#rating').data('userrating');
 ````
-See demo: [stars-rating.meteor.com](stars-rating.meteor.com)
+See demo: [stars-rating.meteor.com](http://stars-rating.meteor.com)
