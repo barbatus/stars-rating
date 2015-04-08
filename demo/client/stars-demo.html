@@ -1,0 +1,26 @@
+<head>
+    <title>Stars Demo</title>
+</head>
+
+<body>
+    <div style="padding:10px">
+        <div>
+            with size=10
+        </div>
+        {{> starsRating rating=4.4 size=10}}
+    </div>
+
+    <div style="padding:10px">
+        <div>
+            default mutable large
+        </div>
+        {{> starsRating rating=4.4 mutable=true size='lg'}}
+    </div>
+
+    <div class="customized" style="padding:10px">
+        <div>
+            with customized colors
+        </div>
+        {{> starsRating rating=4 mutable=true size='lg'}}
+    </div>
+</body>
