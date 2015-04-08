@@ -1,13 +1,14 @@
 /***** Stars Rating ******/
 @star-color: #e7711b;
+@star-default: #d8d8d8;
 @star-hover-color: #F5E000;
 
 .stars-rating {
     font-family: FontAwesome;
-    font-size: 2em;
+    font-size: 1em;
     position: relative;
     width: 5.7em;
-    height: 1.3em;
+    height: 1em;
     overflow: hidden;
 
     .stars-inner-wrap {
@@ -21,53 +22,54 @@
         top: 0;
         z-index: 0;
         cursor: pointer;
-        color: #d8d8d8;
+        color: @star-default;
+        height: 1em;
 
         span {
             visibility: hidden;
             position: relative;
             line-height: 1;
             height: 100%;
+            vertical-align: top;
         }
 
         span:last-of-type {
             visibility: visible;
         }
 
-        &.active, &.current-rating.active {
-            color: @star-hover-color;
-
-            .percent:before {
-                display: none;
-            }
+        .fa {
+            vertical-align: top;
         }
+    }
 
-        &.current-rating {
-            color: @star-color;
-        }
+    .current-rating {
+        color: @star-color;
+    }
+
+    .active {
+        color: @star-hover-color;
 
         .percent:before {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            content: "\f005";
-            width: 30%;
-            overflow: hidden;
-            color: @star-color;
-            z-index: 1000;
+            display: none;
         }
     }
 
-    .user-current-rating {
+    .percent:before {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        content: "\f005";
+        width: 30%;
+        overflow: hidden;
         color: @star-color;
-    }
-
-    .has-user-rating .percent:before {
-        color: @star-color;
+        z-index: 1;
     }
 }
 
 .stars-rating-sm {
-    font-size: 16px;
-    margin: 0 auto;
+    font-size: 1em;
+}
+
+.stars-rating-lg {
+    font-size: 2em;
 }

@@ -1,31 +1,19 @@
 <template name="starsRating">
-    <div id="{{getId}}" class="stars-rating {{css size}}" data-rating="{{rating}}">
+    <div id="{{getId}}" class="stars-rating {{css size}}" style="{{font size}}" data-rating="{{rating}}">
         <div class="stars-inner-wrap">
-            <div class="stars" data-stars="5">
-                <span class="star-1"><i class="fa fa-star"></i></span>
-                <span class="star-2"><i class="fa fa-star"></i></span>
-                <span class="star-3"><i class="fa fa-star"></i></span>
-                <span class="star-4"><i class="fa fa-star"></i></span>
-                <span class="star-5"><i class="fa fa-star"></i></span>
-            </div>
-            <div class="stars" data-stars="4">
-                <span class="star-1"><i class="fa fa-star"></i></span>
-                <span class="star-2"><i class="fa fa-star"></i></span>
-                <span class="star-3"><i class="fa fa-star"></i></span>
-                <span class="star-4"><i class="fa fa-star"></i></span>
-            </div>
-            <div class="stars" data-stars="3">
-                <span class="star-1"><i class="fa fa-star"></i></span>
-                <span class="star-2"><i class="fa fa-star"></i></span>
-                <span class="star-3"><i class="fa fa-star"></i></span>
-            </div>
-            <div class="stars" data-stars="2">
-                <span class="star-1"><i class="fa fa-star"></i></span>
-                <span class="star-2"><i class="fa fa-star"></i></span>
-            </div>
-            <div class="stars" data-stars="1">
-                <span class="star-1"><i class="fa fa-star"></i></span>
-            </div>
+            {{> _stars mutable=getMutable size=5}}
+            {{> _stars mutable=getMutable size=4}}
+            {{> _stars mutable=getMutable size=3}}
+            {{> _stars mutable=getMutable size=2}}
+            {{> _stars mutable=getMutable size=1}}
         </div>
+    </div>
+</template>
+
+<template name="_stars">
+    <div class="stars" data-stars="{{stars.length}}">
+        {{#each stars}}
+            <span class="star-{{this}}"><i class="fa fa-star"></i></span>
+        {{/each}}
     </div>
 </template>

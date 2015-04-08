@@ -1,5 +1,5 @@
 var rtCss = 'current-rating';
-var userRtCss = 'user-current-rating';
+var prCss = 'percent';
 var hasUserCss = 'has-user-rating';
 
 function getStarsEl($parent, index) {
@@ -15,16 +15,16 @@ function setRating($el, rating, isUser) {
     var floor = Math.floor(rating);
     var percent = rating - floor;
 
-    $el.find('.stars').removeClass(rtCss + ' ' + userRtCss);
-    $el.find('.stars').find('.percent').removeClass('percent');
+    $el.find('.stars').removeClass(rtCss);
+    $el.find('.stars').find('.percent').removeClass(prCss);
 
     $el.toggleClass(hasUserCss, isUser);
     for (var i = floor; i >= 0; i--) {
-        getStarsEl($el, i).addClass(isUser ? userRtCss : rtCss);
+        getStarsEl($el, i).addClass(rtCss);
     }
 
     if (percent) {
-        var $percentStar = getStarEl($el, ceil).addClass('percent');
+        var $percentStar = getStarEl($el, ceil).addClass(prCss);
         $percentStar.find('style').remove();
         var style = ['<style>', '#' + $el.attr('id'),
             '.percent:before{width:'+ (percent * 100) +'% !important;}', '</style>'];
@@ -39,7 +39,14 @@ Template.starsRating.helpers({
         return this.id || _.uniqueId('stars_');
     },
     css: function(size) {
-        return 'stars-rating-' + (size || 'lg');
+        if (_.isString(size)) {
+            return 'stars-rating-' + (size || 'sm');
+        }
+    },
+    font: function(size) {
+        if (_.isNumber(size)) {
+            return 'font-size:' + size + 'px';
+        }
     }
 });
 
@@ -64,7 +71,7 @@ Template.starsRating.rendered = function() {
 
 Template.starsRating.events({
     'mouseover .stars': function(event) {
-        if (this.isMutable) {
+        if (this.isMutable || this.mutable) {
             var $this = $(event.currentTarget);
             var rating  = $this.data('stars');
 
@@ -74,13 +81,13 @@ Template.starsRating.events({
         }
     },
     'mouseleave .stars': function(event) {
-        if (this.isMutable) {
+        if (this.isMutable || this.mutable) {
             var $this = $(event.currentTarget);
             $this.parent().find('.stars').removeClass('active');
         }
     },
     'click .stars': function(event) {
-        if (this.isMutable) {
+        if (this.isMutable || this.mutable) {
             var $this = $(event.currentTarget);
             var userRating = $this.data('stars');
             $this.parent().parent().data('userrating', userRating);
@@ -89,5 +96,17 @@ Template.starsRating.events({
             setRating($parent, userRating, true);
             $this.trigger('mouseleave');
         }
+    }
+});
+
+Template.starsRating.helpers({
+    getMutable: function(size) {
+        return this.isMutable || this.mutable;
+    }
+});
+
+Template._stars.helpers({
+    stars: function() {
+        return _.range(1, this.size + 1);
     }
 });
