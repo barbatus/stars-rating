@@ -18,4 +18,15 @@ To access saved value:
 ````js
 var rating = $('#rating').data('userrating');
 ````
+For colors customization use the following snippet:
+````css
+.stars-rating .current-rating,
+.stars-rating .percent:before {
+  color: #color1;
+}
+
+.stars-rating .active {
+  color: #color2;
+}
+````
 See demo: [stars-rating.meteor.com](http://stars-rating.meteor.com)
