@@ -30,4 +30,5 @@ For colors customization use the following snippet:
 }
 ````
 Tested: IE9+, Firefox35+, Chrome40+
+
 See demo: [stars-rating.meteor.com](http://stars-rating.meteor.com)
