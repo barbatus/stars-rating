@@ -7,7 +7,7 @@
     font-family: FontAwesome;
     font-size: 1em;
     position: relative;
-    width: 5.7em;
+    width: 6em;
     height: 1em;
     overflow: hidden;
 
@@ -36,10 +36,6 @@
         span:last-of-type {
             visibility: visible;
         }
-
-        .fa {
-            vertical-align: top;
-        }
     }
 
     .current-rating {
@@ -57,12 +53,13 @@
     .percent:before {
         position: absolute;
         left: 0;
-        bottom: 0;
-        content: "\f005";
         width: 30%;
         overflow: hidden;
-        color: @star-color;
         z-index: 1;
+    }
+
+    .star-glyph:before {
+        font-style: normal;
     }
 }
 

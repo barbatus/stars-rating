@@ -7,7 +7,7 @@
         <div>
             with size=10
         </div>
-        {{> starsRating rating=4.4 size=10}}
+        {{> starsRating rating=4.4 size=14}}
     </div>
 
     <div style="padding:10px">
@@ -22,5 +22,12 @@
             with customized colors
         </div>
         {{> starsRating rating=4 mutable=true size='lg'}}
+    </div>
+
+    <div class="customized_star" style="padding:10px">
+        <div>
+            with customized star
+        </div>
+        {{> starsRating rating=4.5 mutable=true star='★' size='lg'}}
     </div>
 </body>
