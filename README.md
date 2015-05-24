@@ -19,7 +19,7 @@ To access saved value:
 ````js
 var rating = $('#rating').data('userrating');
 ````
-For colors customization add your own CSS class:
+For colors customization, add your own CSS class:
 ````js
 {{> starsRating id='rating' class='mystar' mutable=true}}
 ````
@@ -34,7 +34,8 @@ and follow snippet:
 }
 ````
 It's possible to set a different star symbol.
-For example, add Awesome font and symbol customizing CSS class:
+
+For example, add Awesome font package and symbol configuring CSS class:
 ````css
 .awesome {
   font-family: FontAwesome;
