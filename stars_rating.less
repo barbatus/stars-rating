@@ -4,12 +4,14 @@
 @star-hover-color: #F5E000;
 
 .stars-rating {
-    font-family: FontAwesome;
+    font-family: sans-serif;
     font-size: 1em;
     position: relative;
     width: 6em;
     height: 1em;
     overflow: hidden;
+    content: '★';
+    letter-spacing: -0.5px;
 
     .stars-inner-wrap {
         position: relative;
@@ -30,7 +32,7 @@
             position: relative;
             line-height: 1;
             height: 100%;
-            vertical-align: top;
+            vertical-align: bottom;
         }
 
         span:last-of-type {
@@ -53,6 +55,7 @@
     .percent:before {
         position: absolute;
         left: 0;
+        top: 0;
         width: 30%;
         overflow: hidden;
         z-index: 1;

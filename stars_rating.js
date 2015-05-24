@@ -1,7 +1,6 @@
 var rtCss = 'current-rating';
 var prCss = 'percent';
 var hasUserCss = 'has-user-rating';
-var dftStarGlyph = '\\f005';
 
 function getStarsEl($parent, index) {
     return $parent.find('[data-stars="' + index + '"]');
@@ -43,11 +42,11 @@ function setRating($el, rating, isUser, starGlyph) {
         var $percentStar = getStarEl($el, ceil).addClass(prCss);
         var starColor = getStarColor($el);
         $percentStar.find('style').remove();
-        var style = ['<style>', '#' + $el.attr('id'),
+        var style = ['<style>#' + getOrSetTmplId(),
             buildStyle('percent:before', {
                 width: (percent * 100) + '% !important',
                 color: starColor,
-                content: '"' + starGlyph + '"'}), '</style>'];
+                content: starGlyph}), '</style>'];
         $percentStar.append(style.join(' '));
     }
     $el.trigger('change');
@@ -73,9 +72,6 @@ Template.starsRating.helpers({
         if (_.isNumber(size)) {
             return 'font-size:' + size + 'px';
         }
-    },
-    starGlyph: function() {
-        return this.star || dftStarGlyph;
     }
 });
 
@@ -85,13 +81,18 @@ function onDataChange($el, rating, starGlyph) {
 
 Template.starsRating.rendered = function() {
     var self = this;
+    var $el = $(self.firstNode);
+    var starGlyph = '"' + $el.css('content').replace(/[\',\"]/g, '') + '"';
+    var style = ['<style>#' + getOrSetTmplId(),
+        buildStyle('star-glyph:before', {
+            content: starGlyph}), '</style>'];
+    $el.append(style.join(' '));
     this.autorun(function() {
         var userData = Template.currentData();
         if (userData) {
             var rating = userData.rating;
-            var starGlyph = userData.star || dftStarGlyph;
             if (rating) {
-                onDataChange($(self.firstNode), rating, starGlyph);
+                onDataChange($el, rating, starGlyph);
             }
         }
     });

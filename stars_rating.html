@@ -1,6 +1,5 @@
 <template name="starsRating">
-    <div id="{{getId}}" class="stars-rating {{css size}}" style="{{font size}}" data-rating="{{rating}}">
-        <style>#{{getId}} .star-glyph:before{content:"{{starGlyph}}"}</style>
+    <div id="{{getId}}" class="stars-rating {{class}} {{css size}}" style="{{font size}}" data-rating="{{rating}}">
         <div class="stars-inner-wrap">
             {{> _stars mutable=getMutable size=5}}
             {{> _stars mutable=getMutable size=4}}

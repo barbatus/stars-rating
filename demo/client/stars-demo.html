@@ -14,20 +14,20 @@
         <div>
             default mutable large
         </div>
-        {{> starsRating rating=4.4 mutable=true size='lg'}}
+        {{> starsRating rating=4.5 mutable=true size='lg'}}
     </div>
 
-    <div class="customized" style="padding:10px">
+    <div style="padding:10px">
+        <div>
+            default mutable large and font Awesome's star
+        </div>
+        {{> starsRating rating=4.4 class="awesome" mutable=true size='lg'}}
+    </div>
+
+    <div style="padding:10px">
         <div>
             with customized colors
         </div>
-        {{> starsRating rating=4 mutable=true size='lg'}}
-    </div>
-
-    <div class="customized_star" style="padding:10px">
-        <div>
-            with customized star
-        </div>
-        {{> starsRating rating=4.5 mutable=true star='★' size='lg'}}
+        {{> starsRating rating=4 class="awesome customized" mutable=true size='lg'}}
     </div>
 </body>
