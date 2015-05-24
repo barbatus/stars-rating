@@ -1,4 +1,5 @@
-Stars rating control based on FontAwesome with two modes: fixed and mutable.
+Stars rating control with two modes: fixed and mutable.
+Among other features: colors cusomization and different star symbols.
 
 Mutable mode allows input from the user.
 
@@ -18,17 +19,34 @@ To access saved value:
 ````js
 var rating = $('#rating').data('userrating');
 ````
-For colors customization use the following snippet:
+For colors customization add your own CSS class:
+````js
+{{> starsRating id='rating' class='mystar' mutable=true}}
+````
+and follow snippet:
 ````css
-.stars-rating .current-rating,
-.stars-rating .percent:before {
+.mystar .current-rating {
   color: #color1;
 }
 
-.stars-rating .active {
+.mystar .active {
   color: #color2;
 }
 ````
+It's possible to set a different star symbol.
+For example, add Awesome font and symbol customizing CSS class:
+````css
+.awesome {
+  font-family: FontAwesome;
+  content: '\f005';
+}
+````
+then use it the template:
+````js
+{{> starsRating id='rating' class='awesome' mutable=true}}
+````
+You will see rating with Awesome stars.
+
 Tested: IE9+, Firefox35+, Chrome40+
 
 See demo: [stars-rating.meteor.com](http://stars-rating.meteor.com)
