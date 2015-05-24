@@ -25,18 +25,19 @@
         cursor: pointer;
         color: @star-default;
         height: 1em;
+        line-height: 1em;
 
         span {
             visibility: hidden;
             position: relative;
-            line-height: 1;
+            line-height: 1em;
             height: 100%;
             vertical-align: bottom;
             letter-spacing: 0.1em;
-        }
 
-        .star-5 {
-            letter-spacing: 0;
+            &.percent {
+                letter-spacing: 0;
+            }
         }
 
         span:last-of-type {
@@ -59,7 +60,8 @@
     .percent:before {
         position: absolute;
         left: 0;
-        top: 0;
+        top: 50%;
+        margin-top: -0.5em;
         width: 30%;
         overflow: hidden;
         z-index: 1;

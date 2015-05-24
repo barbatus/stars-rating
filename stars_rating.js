@@ -52,16 +52,16 @@ function setRating($el, rating, isUser, starGlyph) {
     $el.trigger('change');
 }
 
-function getOrSetTmplId() {
+function getOrSetTmplId(opt_id) {
     if (!Template.instance()._id) {
-        Template.instance()._id = _.uniqueId('stars_');
+        Template.instance()._id = opt_id || _.uniqueId('stars_');
     }
     return Template.instance()._id;
 }
 
 Template.starsRating.helpers({
     getId: function() {
-        return this.id || getOrSetTmplId();
+        return getOrSetTmplId(this.id);
     },
     css: function(size) {
         if (_.isString(size)) {
