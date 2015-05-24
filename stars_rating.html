@@ -12,8 +12,6 @@
 
 <template name="_stars">
     <div class="stars" data-stars="{{stars.length}}">
-        {{#each stars}}
-            <span class="star-{{this}}"><i class="star-glyph"></i></span>
-        {{/each}}
+        {{#each stars}}<span class="star-{{this}}"><i class="star-glyph"></i></span>{{/each}}
     </div>
 </template>

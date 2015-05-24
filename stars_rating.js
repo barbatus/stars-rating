@@ -87,6 +87,7 @@ Template.starsRating.rendered = function() {
         buildStyle('star-glyph:before', {
             content: starGlyph}), '</style>'];
     $el.append(style.join(' '));
+
     this.autorun(function() {
         var userData = Template.currentData();
         if (userData) {
