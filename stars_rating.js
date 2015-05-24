@@ -124,11 +124,13 @@ Template.starsRating.events({
         if (this.isMutable || this.mutable) {
             var $this = $(event.currentTarget);
             var userRating = $this.data('stars');
-            $this.parent().parent().data('userrating', userRating);
-            var $parent = $this.parent();
+            var $el = $this.parent().parent();
+            $el.data('userrating', userRating);
 
-            setRating($parent, userRating, true);
-            $this.trigger('mouseleave');
+            var $starsWrap = $this.parent();
+            setRating($starsWrap, userRating, true);
+
+            $starsWrap.children().removeClass('active');
         }
     }
 });
