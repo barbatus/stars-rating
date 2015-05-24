@@ -1,4 +1,5 @@
 Stars rating control with two modes: fixed and mutable.
+
 Among other features: colors cusomization and different star symbols.
 
 Mutable mode allows input from the user.
