@@ -108,12 +108,16 @@ Template.starsRating.events({
             for (var i = rating; i >= 0; i--) {
                 getStarsEl($this.parent(), i).addClass('active');
             }
+
+            for (var i = rating + 1; i <= 5; i++) {
+                getStarsEl($this.parent(), i).removeClass('active');
+            }
         }
     },
-    'mouseleave .stars': function(event) {
+    'mouseleave .stars-rating': function(event) {
         if (this.isMutable || this.mutable) {
             var $this = $(event.currentTarget);
-            $this.parent().find('.stars').removeClass('active');
+            $this.find('.stars').removeClass('active');
         }
     },
     'click .stars': function(event) {
