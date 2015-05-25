@@ -82,6 +82,9 @@ function onDataChange($el, rating, starGlyph) {
 Template.starsRating.rendered = function() {
     var self = this;
     var $el = $(self.firstNode);
+    // Takes star symbol from the upper CSS class (via content property) and
+    // adds all required styles to set new symbol for the internal
+    // pseudo elements.
     var starGlyph = '"' + $el.css('content').replace(/[\',\"]/g, '') + '"';
     var style = ['<style>#' + getOrSetTmplId(),
         buildStyle('star-glyph:before', {

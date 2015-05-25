@@ -1,6 +1,6 @@
 Package.describe({
     name: 'barbatus:stars-rating',
-    version: '1.0.0',
+    version: '1.0.1',
     summary: 'Stars rating control based on FontAwesome',
     git: 'https://github.com/barbatus/stars-rating',
     documentation: 'README.md'
