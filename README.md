@@ -1,10 +1,12 @@
 Stars rating control with two modes: fixed and mutable.
 
-Among other features: colors cusomization and different star symbols.
-
 Mutable mode allows input from the user.
 
-In order to render markup with small font size use (or size='lg' for large):
+Among other features: colors cusomization and different star symbols.
+
+See demo: [stars-rating.meteor.com](http://stars-rating.meteor.com)
+
+In order to render markup with small font size use (or ````size='lg'```` for large):
 ````html
 {{> starsRating rating=4.5 size='sm'}}
 ````
@@ -16,7 +18,7 @@ if you want user to iteract with the control and set a rating use:
 ````html
 {{> starsRating id='rating' mutable=true}}
 ````
-To access saved value:
+To access saved value, get element by ID and then:
 ````js
 var rating = $('#rating').data('userrating');
 ````
@@ -26,24 +28,26 @@ For colors customization, add your own CSS class:
 ````
 and follow snippet:
 ````css
+# Changes default color.
 .mystar .current-rating {
   color: #color1;
 }
 
+# A color that highlights selected stars when user interacts with the control.
 .mystar .active {
   color: #color2;
 }
 ````
 It's possible to set a different star symbol.
 
-For example, add Awesome font package and symbol configuring CSS class:
+For example, add Awesome font package and configure a star symbol in a CSS class like:
 ````css
 .awesome {
   font-family: FontAwesome;
   content: '\f005';
 }
 ````
-then use it the template:
+then use that class in the template:
 ````js
 {{> starsRating id='rating' class='awesome' mutable=true}}
 ````
@@ -51,4 +55,3 @@ You will see rating with Awesome stars.
 
 Tested: IE9+, Firefox35+, Chrome40+
 
-See demo: [stars-rating.meteor.com](http://stars-rating.meteor.com)
