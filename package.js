@@ -1,14 +1,14 @@
 Package.describe({
     name: 'barbatus:stars-rating',
-    version: '1.0.1',
-    summary: 'Stars rating control based on FontAwesome',
+    version: '1.0.3',
+    summary: 'Stars rating control',
     git: 'https://github.com/barbatus/stars-rating',
     documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
     api.versionsFrom('1.0.3.2');
-    api.use(['less', 'underscore', 'jquery', 'templating'], 'client');
+    api.use(['less@2.5.0_2', 'underscore', 'jquery', 'templating'], 'client');
     api.addFiles([
         'stars_rating.html',
         'stars_rating.js',
