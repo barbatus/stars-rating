@@ -7,7 +7,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-    api.versionsFrom('1.0.3.2');
+    api.versionsFrom(['1.0.3.2', '1.2']);
     api.use(['less', 'underscore', 'jquery', 'templating'], 'client');
     api.addFiles([
         'stars_rating.html',
