@@ -40,13 +40,13 @@ and follow snippet:
 ````
 It's possible to set a different star symbol.
 
-For example, add Awesome font package and add CSS class setting font family:
+For example, add Awesome font package and CSS class setting font family:
 ````css
 .awesome {
   font-family: FontAwesome;
 }
 ````
-then configure a star symbol in the template and set CSS class as well:
+then configure a star symbol in the template:
 ````js
 {{> starsRating id='rating' star='\\f005' class='awesome' mutable=true}}
 ````
