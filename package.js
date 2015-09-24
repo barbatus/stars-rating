@@ -1,6 +1,6 @@
 Package.describe({
     name: 'barbatus:stars-rating',
-    version: '1.0.5',
+    version: '1.0.7',
     summary: 'Stars rating control',
     git: 'https://github.com/barbatus/stars-rating',
     documentation: 'README.md'

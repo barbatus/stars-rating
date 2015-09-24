@@ -17,6 +17,33 @@ function getStarColor($el) {
     return starColor;
 }
 
+function getStarGlyph($el) {
+    var starGlyph = $el.attr('star');
+
+    if (!starGlyph) {
+        // For compatibility with older versions.
+        //
+        // If now star attr is set, take the star symbol
+        // from the upper CSS class (via content property).
+        // This will work in most browsers except IE.
+        starGlyph = $el.css('content');
+
+        if (!starGlyph || starGlyph === 'none') {
+            starGlyph = '\\2605';
+        } else {
+            // if it's IE replace glyph with the default symbol.
+            if (starGlyph === 'normal') {
+                starGlyph = '\\2605';
+            }
+        }
+    }
+
+    // Prepare glyph for styles.
+    starGlyph = '"' + starGlyph.trim().replace(/[\',\"]/g, '') + '"';
+
+    return starGlyph;
+}
+
 function buildStyle(className, styles) {
     var styleStr = '';
     for (var style in styles) {
@@ -82,10 +109,11 @@ function onDataChange($el, rating, starGlyph) {
 Template.starsRating.rendered = function() {
     var self = this;
     var $el = $(self.firstNode);
-    // Takes star symbol from the upper CSS class (via content property) and
-    // adds all required styles to set new symbol for the internal
+
+    var starGlyph = getStarGlyph($el);
+
+    // Adds all required styles to set new symbol for the internal
     // pseudo elements.
-    var starGlyph = '"' + $el.css('content').replace(/[\',\"]/g, '') + '"';
     var style = ['<style>#' + getOrSetTmplId(),
         buildStyle('star-glyph:before', {
             content: starGlyph}), '</style>'];

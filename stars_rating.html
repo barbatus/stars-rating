@@ -1,5 +1,6 @@
 <template name="starsRating">
-    <div id="{{getId}}" class="stars-rating {{class}} {{css size}}" style="{{font size}}" data-rating="{{rating}}">
+    <div id="{{getId}}" class="stars-rating {{class}} {{css size}}" style="{{font size}}"
+        data-rating="{{rating}}" star={{star}}>
         <div class="stars-inner-wrap">
             {{> _stars mutable=getMutable size=5}}
             {{> _stars mutable=getMutable size=4}}
