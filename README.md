@@ -52,13 +52,13 @@ then configure a star symbol in the template:
 ````
 You will see rating with Awesome stars.
 
+Tested: IE9+, Firefox35+, Chrome40+
+
 ## API
 
 There are one event and one method supported via jQuery API.
 
 To subscribe on star changes use `$('#rating').on('change', ...)`.
 
-To reset a star use `$('#rating').trigger('reset')`.
-
-Tested: IE9+, Firefox35+, Chrome40+
+To reset a star do `$('#rating').trigger('reset')`.
 
