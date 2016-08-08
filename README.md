@@ -58,7 +58,7 @@ Tested: IE9+, Firefox35+, Chrome40+
 
 There are one event and one method supported via jQuery API.
 
-To subscribe on star changes use `$('#rating').on('change', ...)`.
+To subscribe on the star value changes use `$('#rating').on('change', ...)`.
 
 To reset a star do `$('#rating').trigger('reset')`.
 
