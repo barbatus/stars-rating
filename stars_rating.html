@@ -1,18 +1,18 @@
 <template name="starsRating">
-    <div id="{{getId}}" class="stars-rating {{class}} {{css size}}" style="{{font size}}"
-        data-rating="{{rating}}" star={{star}}>
-        <div class="stars-inner-wrap">
-            {{> _stars mutable=getMutable size=5}}
-            {{> _stars mutable=getMutable size=4}}
-            {{> _stars mutable=getMutable size=3}}
-            {{> _stars mutable=getMutable size=2}}
-            {{> _stars mutable=getMutable size=1}}
-        </div>
+  <div id="{{getId}}" class="stars-rating {{class}} {{css size}}" style="{{font size}}"
+    data-rating="{{rating}}" star={{star}}>
+    <div class="stars-inner-wrap">
+      {{> _stars mutable=getMutable size=5}}
+      {{> _stars mutable=getMutable size=4}}
+      {{> _stars mutable=getMutable size=3}}
+      {{> _stars mutable=getMutable size=2}}
+      {{> _stars mutable=getMutable size=1}}
     </div>
+  </div>
 </template>
 
 <template name="_stars">
-    <div class="stars" data-stars="{{stars.length}}">
-        {{#each stars}}<span class="star-{{this}}"><i class="star-glyph"></i></span>{{/each}}
-    </div>
+  <div class="stars" data-stars="{{stars.length}}">
+    {{#each stars}}<span class="star-{{this}}"><i class="star-glyph"></i></span>{{/each}}
+  </div>
 </template>

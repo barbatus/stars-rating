@@ -1,33 +1,38 @@
 <head>
-    <title>Stars Demo</title>
+  <title>Stars Demo</title>
 </head>
 
 <body>
-    <div style="padding:10px">
-        <div>
-            with size=14 (rating = 4.4)
-        </div>
-        {{> starsRating rating=4.4 size=14}}
-    </div>
-
-    <div style="padding:10px">
-        <div>
-            default mutable large (rating = 4.5)
-        </div>
-        {{> starsRating rating=4.5 mutable=true size='lg'}}
-    </div>
-
-    <div style="padding:10px">
-        <div>
-            default mutable large and font Awesome's star (rating = 4.4)
-        </div>
-        {{> starsRating star='\\f005' rating=4.4 class="awesome" mutable=true size='lg'}}
-    </div>
-
-    <div style="padding:10px">
-        <div>
-            with customized colors
-        </div>
-        {{> starsRating star='\\f005' rating=4 class="awesome customized" mutable=true size='lg'}}
-    </div>
+  {{> demo}}
 </body>
+
+<template name="demo">
+  <div style="padding:10px">
+    <div>
+        with size=14 (rating = 4.4)
+    </div>
+    {{> starsRating rating=4.4 size=14}}
+  </div>
+
+  <div style="padding:10px">
+    <div>
+      default mutable large (rating = 4.5)
+    </div>
+    {{> starsRating id='rating' rating=4.5 mutable=true size='lg'}}
+    <button class="reset">reset</button>
+  </div>
+
+  <div style="padding:10px">
+    <div>
+      default mutable large and font Awesome's star (rating = 4.4)
+    </div>
+    {{> starsRating star='\\f005' rating=4.4 class="awesome" mutable=true size='lg'}}
+  </div>
+
+  <div style="padding:10px">
+    <div>
+      with customized colors
+    </div>
+    {{> starsRating star='\\f005' rating=4 class="awesome customized" mutable=true size='lg'}}
+  </div>
+</template>
