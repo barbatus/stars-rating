@@ -94,8 +94,12 @@ function addjQuryApi($el) {
   });
 }
 
-function destroyApi() {
-  $el.unbind('reset');
+function destroyApi($el) {
+  if ($el) {
+    $el.unbind('reset');
+  } else {
+    console.log("warning: $el no longer valid")
+  }
 }
 
 function getOrSetTmplId(opt_id) {
