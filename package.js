@@ -1,13 +1,13 @@
 Package.describe({
   name: 'barbatus:stars-rating',
-  version: '1.1.0',
+  version: '1.1.1',
   summary: 'Stars rating control',
   git: 'https://github.com/barbatus/stars-rating',
   documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom(['1.0.3.2', '1.2']);
+  api.versionsFrom(['1.0.3.2', '1.4.0.1']);
   api.use([
     'less', 'underscore', 'jquery',
     'templating', 'ecmascript'
