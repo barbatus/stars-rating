@@ -1,6 +1,5 @@
-
 Template.demo.events({
-  'click .reset': function() {
-    $('#rating').trigger('reset');
-  }
+	'click .reset': function () {
+		$('#rating').trigger('reset');
+	},
 });
